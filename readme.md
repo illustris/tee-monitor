@@ -104,3 +104,10 @@ $ make
 $ make run-only
 ```
 
+
+# Kernel disassembly
+To dump and disassemble the kernel from the secure world, do the folllowing before launching qemu:
+```bash
+$ unbuffer ~/devel/optee/soc_term/soc_term 54321 | unbuffer tee kdump.hex # Dump kernel to a .hex file
+$ arm-linux-gnueabi-objdump -D kdump.hex -m arm > kdump.asm
+```
